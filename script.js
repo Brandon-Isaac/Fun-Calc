@@ -18,7 +18,6 @@ keys.addEventListener('click', e =>{
             if(displayedNum==="0"|| previousKeyType==="operator"){
                 display.textContent=keyContent
             }else if(previousKeyType==="calculate"){
-              key.dataset.action=null
                 display.textContent=keyContent
             }
             
@@ -45,7 +44,7 @@ keys.addEventListener('click', e =>{
             console.log("decimal")
             if (!displayedNum.includes('.')) {
               display.textContent = displayedNum + '.';
-            }else if (previousKeyType === 'operator' || previousKeyType === 'calculate') {
+            }else if (previousKeyType === 'operator' || calculator.dataset.previousKeyType === 'calculate') {
               display.textContent = '0.';
             }
             calculator.dataset.previousKeyType = 'decimal';
