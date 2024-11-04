@@ -37,7 +37,6 @@ button{
     font-size: 1.5em;
     padding: 20px;
     cursor: pointer;
-    transition: 0.5s;
 }
 .key--operator{
     background-color: #f5923e;
@@ -50,10 +49,5 @@ button{
     font-size: 2em;
 }
 button:active{
-    background-color: #d9d9d9;
-}
-button:hover{
-    background-color: #000000;
-    color: #ffffff;
-    cursor: pointer;
+    background-color: #909090;
 }

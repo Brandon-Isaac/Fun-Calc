@@ -10,15 +10,22 @@ keys.addEventListener('click', e =>{
         const displayedNum=display.textContent
         const previousKeyType = calculator.dataset.previousKeyType
 
+
+        Array.from(key.parentNode.children)
+        .forEach(k => k.classList.remove('is-depressed'))
         
         if(!action){
             if(displayedNum==="0"|| previousKeyType==="operator"){
+                display.textContent=keyContent
+            }else if(previousKeyType==="calculate"){
+              key.dataset.action=null
                 display.textContent=keyContent
             }
             
             else{
                 display.textContent=displayedNum+keyContent
             }
+            calculator.dataset.previousKeyType = 'number';
             console.log("Number key")
         }
         
@@ -27,23 +34,32 @@ keys.addEventListener('click', e =>{
 
             calculator.dataset.firstValue = displayedNum
             calculator.dataset.operator = action
-            calculator.dataset.previousKeyType = 'operator'
-
+            calculator.dataset.previousKeyType = 'operator';
             key.classList.add('is-depressed')
+            calculator.dataset.action = 'calculate';
 
         }
-        Array.from(key.parentNode.children)
-        .forEach(k => k.classList.remove('is-depressed'))
+        
         if(action=="decimal")
         {
             console.log("decimal")
-            display.textContent=displayedNum+"."
+            if (!displayedNum.includes('.')) {
+              display.textContent = displayedNum + '.';
+            }else if (previousKeyType === 'operator' || previousKeyType === 'calculate') {
+              display.textContent = '0.';
+            }
+            calculator.dataset.previousKeyType = 'decimal';
         }
         
         else if (action=="clear")
 
         {
             console.log("Clear screen")
+            calculator.dataset.firstValue = ''
+            calculator.dataset.operator = ''
+            calculator.dataset.secondValue = ''          
+            display.textContent=0
+            calculator.dataset.previousKeyType = 'clear';
         }
 
 
@@ -51,14 +67,26 @@ keys.addEventListener('click', e =>{
             const firstValue = calculator.dataset.firstValue
             const secondValue=displayedNum
             const operator = calculator.dataset.operator
-            display.textContent = calculate(firstValue, operator, secondValue)
+           
+              if (firstValue){
+                const calcValue = calculate(firstValue, operator, secondValue)
+                display.textContent = calcValue
+                calculator.dataset.firstValue = calcValue
+              }else{
+                display.textContent = firstValue  
+              
+            }
+            
             console.log("Calculation key")
+            calculator.dataset.previousKeyType = 'calculate';
+            
+
         }
        
     }
 })
 const calculate = (n1, operator, n2) => {
-    let result = ''
+    var result = display.textContent
   num1=parseFloat(n1)
   num2=parseFloat(n2)
     if (operator === 'add') {
@@ -70,6 +98,5 @@ const calculate = (n1, operator, n2) => {
     } else if (operator === 'divide') {
       result = num1 / num2
     }
-  
     return result
   }
