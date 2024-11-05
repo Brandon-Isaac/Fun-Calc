@@ -80,7 +80,7 @@ const calculate = (n1, operator, n2) => {
     const num2 = parseFloat(n2);
 
     if (operator === 'add') {
-        result = num1 + num2;
+        result= num1 + num2;
     } else if (operator === 'subtract') {
         result = num1 - num2;
     } else if (operator === 'multiply') {
