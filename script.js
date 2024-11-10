@@ -1,6 +1,6 @@
-const calculator=document.querySelector('.calculator');
-const keys=document.querySelector('.calculator__keys')
-const display=document.querySelector('.calculator__display')
+const calculator = document.querySelector('.calculator');
+const keys = document.querySelector('.calculator__keys')
+const display = document.querySelector('.calculator__display')
 
 keys.addEventListener('click', e => {
     if (e.target.matches('button')) {
@@ -60,7 +60,7 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'calculate';
         } else if (action === "clear") {
             console.log("Clear screen");
-             key.textContent = 'AC'
+            key.textContent = 'AC'
             calculator.dataset.firstValue = '';
             calculator.dataset.operator = '';
             calculator.dataset.secondValue = '';
@@ -68,8 +68,8 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'clear';
         }
         if (action !== 'clear') {
-          const clearButton = calculator.querySelector('[data-action=clear]')
-          clearButton.textContent = 'CE'
+            const clearButton = calculator.querySelector('[data-action=clear]')
+            clearButton.textContent = 'CE'
         }
     }
 });
@@ -80,7 +80,7 @@ const calculate = (n1, operator, n2) => {
     const num2 = parseFloat(n2);
 
     if (operator === 'add') {
-        result= num1 + num2;
+        result = num1 + num2;
     } else if (operator === 'subtract') {
         result = num1 - num2;
     } else if (operator === 'multiply') {
@@ -92,10 +92,6 @@ const calculate = (n1, operator, n2) => {
     // Limit to 12 significant figures
     result = parseFloat(result.toPrecision(12));
 
-    // Convert to exponential form if necessary
-    if (result.toString().length > 12) {
-        result = result.toExponential(4);
-    }
 
     return result;
 };
