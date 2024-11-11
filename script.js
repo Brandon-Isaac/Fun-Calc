@@ -56,7 +56,6 @@ keys.addEventListener('click', e => {
                 display.textContent = formatNumber(displayedNum);
             }
 
-            console.log("Calculation key");
             calculator.dataset.previousKeyType = 'calculate';
         } else if (action === "clear") {
             console.log("Clear screen");
