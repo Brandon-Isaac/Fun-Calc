@@ -28,7 +28,7 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'number';
             console.log("Number key");
         } else if (action === "add" || action === "subtract" || action === "multiply" || action == "divide") {
-            console.log("operator key");
+           
 
             calculator.dataset.firstValue = displayedNum;
             calculator.dataset.operator = action;
