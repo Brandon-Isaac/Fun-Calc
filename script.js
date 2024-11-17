@@ -26,7 +26,6 @@ keys.addEventListener('click', e => {
             }
             display.textContent = formatNumber(displayedNum);
             calculator.dataset.previousKeyType = 'number';
-            console.log("Number key");
         } else if (action === "add" || action === "subtract" || action === "multiply" || action == "divide") {
            
 
@@ -58,7 +57,6 @@ keys.addEventListener('click', e => {
 
             calculator.dataset.previousKeyType = 'calculate';
         } else if (action === "clear") {
-            console.log("Clear screen");
             key.textContent = 'AC'
             calculator.dataset.firstValue = '';
             calculator.dataset.operator = '';
