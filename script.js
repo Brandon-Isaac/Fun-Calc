@@ -86,7 +86,6 @@ const calculate = (n1, operator, n2) => {
         result = num1 / num2;
     }
 
-    // Limit to 12 sf
     result = parseFloat(result.toPrecision(12));
 
 
