@@ -10,7 +10,7 @@ keys.addEventListener('click', e => {
         let displayedNum = display.textContent.replace(/\s/g, ''); // Remove spaces for calculation
         const previousKeyType = calculator.dataset.previousKeyType;
 
-        // Remove 'is-depressed' class from all keys
+        // Remove 'is-depressed' class from  keys
         Array.from(key.parentNode.children)
             .forEach(k => k.classList.remove('is-depressed'));
 
